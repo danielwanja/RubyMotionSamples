@@ -32,6 +32,26 @@ class PlayersViewController < UITableViewController
       end
     end
     
+    def tableView(table_view, didSelectRowAtIndexPath: index_path)
+      puts "selected player:#{index_path.row} self:#{self}"
+    end
+        
+    def prepareForSegue(segue, sender:sender)
+      puts "#{self.to_s}: CustomViewController1::prepareForSegue '#{segue.identifier}'"
+
+      if segue.identifier == "AddPlayer"
+        navigation_controller = segue.destinationViewController
+        player_details_view_controller = navigation_controller.viewControllers[0]
+        player_details_view_controller.delegate = self
+      end
+    end
+    
+    def player_added(player)
+      @players << player
+      index_path = NSIndexPath.indexPathForRow(-1, inSection:0)
+      tableView.insertRowsAtIndexPaths([index_path], withRowAnimation:UITableViewRowAnimationAutomatic)
+    end
+    
     protected
     
     def rating_image(rating)
