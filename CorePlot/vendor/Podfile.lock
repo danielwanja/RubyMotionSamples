@@ -1,0 +1,5 @@
+PODS:
+  - CorePlot (1.0)
+
+DEPENDENCIES:
+  - CorePlot
