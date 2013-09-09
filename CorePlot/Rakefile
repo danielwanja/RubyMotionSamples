@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 $:.unshift("/Library/RubyMotion/lib")
-require 'motion/project'
+require 'motion/project/template/ios'
+
 require 'motion-cocoapods'
 Bundler.require
 
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'CorePlot Demo'
-  
+  app.device_family = [:ipad]
+
   app.pods do
     pod 'CorePlot'
   end

@@ -15,23 +15,22 @@ class PieViewController < UIViewController
     graph.applyTheme(CPTTheme.themeNamed(KCPTDarkGradientTheme))
     
 
-    # graph.applyTheme(CPTTheme.themeNamed(KCPTDarkGradientTheme))
-    pieChart = CPTPieChart.alloc.initWithFrame(self.view.bounds)
-    pieChart.dataSource = @data;
-    # pieChart.delegate = self;
-    pieChart.pieRadius = (hosting_view.bounds.size.height * 0.7) / 2;
-    # pieChart.identifier = graph.title;
-    # pieChart.startAngle = M_PI_4;
-    pieChart.sliceDirection = CPTPieDirectionClockwise;    
+    piePlot = CPTPieChart.alloc.initWithFrame(self.view.bounds)
+    piePlot.dataSource = @data;
+    # piePlot.delegate = self;
+    piePlot.pieRadius = (hosting_view.bounds.size.height * 0.7) / 2;
+    # piePlot.identifier = graph.title;
+    # piePlot.startAngle = M_PI_4;
+    piePlot.sliceDirection = CPTPieDirectionClockwise;    
 
     # // 3 - Create gradient
     # CPTGradient *overlayGradient = [[CPTGradient alloc] init];
     # overlayGradient.gradientType = CPTGradientTypeRadial;
     # overlayGradient = [overlayGradient addColorStop:[[CPTColor blackColor] colorWithAlphaComponent:0.0] atPosition:0.9];
     # overlayGradient = [overlayGradient addColorStop:[[CPTColor blackColor] colorWithAlphaComponent:0.4] atPosition:1.0];
-    # pieChart.overlayFill = [CPTFill fillWithGradient:overlayGradient];
+    # piePlot.overlayFill = [CPTFill fillWithGradient:overlayGradient];
 
-    graph.addPlot(pieChart)
+    graph.addPlot(piePlot)
     hosting_view.hostedGraph = graph
 
   end
