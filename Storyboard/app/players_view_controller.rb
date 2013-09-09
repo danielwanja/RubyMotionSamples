@@ -44,6 +44,16 @@ class PlayersViewController < UITableViewController
         player_details_view_controller = navigation_controller.viewControllers[0]
         player_details_view_controller.delegate = self
       end
+      
+      if segue.identifier == "EditPlayer"
+        navigation_controller = segue.destinationViewController
+        player_details_view_controller = navigation_controller.viewControllers[0]
+        player_details_view_controller.delegate = self
+        index_path = tableView.indexPathForCell(sender)
+        player = @players[index_path.row]
+        puts "[1] IN SEGUE:#{player.nil?}"
+        player_details_view_controller.selected_player = player
+      end
     end
     
     def player_added(player)

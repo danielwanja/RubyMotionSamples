@@ -2,10 +2,15 @@
 # and now adapting the iOS Tutorial book example on using Storyboard.
 
 # TODO:
+# Add Gemfile
 # game_picker_view should keep track of the selected game
 # when editing the selected player should be passed to the details
 # when editing the selected game should be passed to the game picker
 
+# BUG:
+# Done on Add Player crashes
+# Clicking on Player should show Player name and let edit the name
+# Game details doesn'tl
 
 # Similar to BubbleWrap extension but for UIBarButtonItem. Note the action must be a string:
 module UIBarButtonItemWrap

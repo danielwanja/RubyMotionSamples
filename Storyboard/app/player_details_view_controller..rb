@@ -7,14 +7,30 @@ class PlayerDetailsViewController < UITableViewController
     # make sure our views are loaded
     self.view
   end
+  
+  def selected_player
+    @selected_player
+  end
+  
+  def selected_player=(value)
+    @selected_player = value
+    puts "[1] setting selected player:#{selected_player}"
+  end
 
   def viewDidLoad
     @done_button   = self.navigationItem.rightBarButtonItem
     @cancel_button = self.navigationItem.leftBarButtonItem
     
     @done_button.target_action(self, 'done_clicked')  # FIXME: is there not another way via delegates?
-    @cancel_button.target_action(self, 'cancel_clicked') 
-    
+    @cancel_button.target_action(self, 'cancel_clicked')   
+    puts "[2] view did load :#{self}"
+    #load_fields  <-- field are not there yet???
+  end
+  
+  def load_fields
+    self.title = selected_player ? "Edit Player" : "Add Player"
+    nameField.text = selected_player ? selected_player.name : ""
+    gameField.detailLabel.text = selected_player ? selected_player.game : ""
   end
 
   def tableView(table_view, didSelectRowAtIndexPath: index_path)
